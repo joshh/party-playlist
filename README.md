@@ -1,24 +1,12 @@
-# README
+# Party Playlist
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app uses the spotify API to allow multiple users to contribute to the same playlist through a web interface
 
-Things you may want to cover:
+This app uses .env to store keys. To get it working, you'll need to create both a spotify and facebook api account as well as a .env file in your root directory with the following variables.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```.env
+FACEBOOK_ID=123
+FACEBOOK_SECRET=123
+SPOTIFY_ID=132
+SPOTIFY_SECRET=123
+```
