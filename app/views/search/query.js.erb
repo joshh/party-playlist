@@ -1,0 +1,3 @@
+$(function() {
+  $('.results').html( '<%=escape_javascript(render partial: 'results', locals: { data: @data })%>')
+});

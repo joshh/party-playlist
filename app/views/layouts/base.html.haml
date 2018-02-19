@@ -1,0 +1,57 @@
+
+
+
+
+!!!
+%html
+  %head
+    %meta(charset="utf-8")
+    -# %meta(name='language' content='en')
+    %title= raw(render_title)
+    = #favicon_link_tag 'ico.ico'
+    = yield :canonical
+
+    -# Styles
+    = yield :styles_pre
+    = stylesheet_link_tag 'application', media: 'all'
+
+    = yield :styles
+
+    -# Meta
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1"}
+    %meta{name: "cloudinary_cloud_name", content: "teepublic"}
+    %link{rel: "apple-touch-icon", href: '/assets/logos/tp-crest.png'}
+
+
+
+    = yield :meta_tags
+
+    -# Scripts
+    = yield :header_scripts
+
+
+    = yield :header_pixels_prod if Rails.env.production?
+
+  %body#teepublic{ class: '' }
+    .main-wrapper
+      = yield :body_header
+      #content
+        .flash.x
+          - unless flash[:error].blank?
+            .error= flash[:error]
+
+          - unless flash[:notice].blank?
+            .notice.temp= flash[:notice].html_safe
+
+          - unless flash[:success].nil?
+            .notice.success= flash[:success]
+            = yield :flash
+
+        = yield :content
+
+      = render partial: '/shared/footer'
+
+
+    = yield :javascripts
+
+    = yield :footer_scripts

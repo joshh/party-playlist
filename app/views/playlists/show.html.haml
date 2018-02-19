@@ -1,0 +1,46 @@
+%h1= @playlist.name
+
+.m-playlist-participants
+  %h2 Participants
+  %ul
+    %li
+      = @playlist.user.name
+    - @playlist.playlist_users.each do |plu|
+      %li
+        = plu.user.name
+
+.m-playlist
+  = render partial: "playlist", locals: { data: @playlist }
+
+.search
+  = form_for @playlist, url: '/search', method: :post, remote: true do |f|
+
+    = # form_tag '/search', method: :post, authenticity_token: true, remote: true do
+    = csrf_meta_tag
+    = text_field_tag(:query)
+    = hidden_field_tag('id', @playlist.slug) 
+    =submit_tag 'Title', {value: 'track'}
+    =submit_tag 'Artist', {value: 'artist'}
+    =submit_tag 'Album', {value: 'album'}
+
+.results
+
+= content_for :javascripts do
+  :javascript
+    $(document).ready(function() {
+      $(".no").on( "click", function() {
+        var type = $(this).val();
+        var query = $('#query').val();
+        
+        $.ajax({
+          type: "POST",
+          url: '/search',
+          data: {type: type, query: query},
+          success: function(data){
+            alert('all set')
+            console.log(data)
+          }
+
+        });
+      });
+    });

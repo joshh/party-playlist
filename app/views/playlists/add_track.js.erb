@@ -1,0 +1,4 @@
+$(function() {
+  $('.m-playlist').html( '<%=escape_javascript(render partial: "playlist", locals: { playlist: @playlist })%>')
+});
+

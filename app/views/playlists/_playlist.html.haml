@@ -1,0 +1,8 @@
+- @playlist.playlist_tracks.each do |track|
+  .m-playlist-track
+    .m-playlist-image
+      = image_tag track.art
+    .m-playlist-track= track.name
+    .m-playlist-track= track.artist
+    .m-playlist-track= track.album
+    .m-playlist-track= "#{track.minutes}:#{track.seconds.to_s.rjust(2, '0')}"

@@ -1,0 +1,9 @@
+.m-results-tracks
+  - @data.each do |d|
+    .m-results-track
+      = # image_tag d[:images].last[:url]
+      = d[:name]
+      = d[:artist]
+      = d[:album]
+      = link_to 'play', playlist_add_track_path(playlist_id: params['id'], uri: d[:id]), remote: true
+

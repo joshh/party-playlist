@@ -1,0 +1,16 @@
+%header
+  %ul
+    - if current_user
+      %li
+        = link_to 'logout', '/signout'
+    - else
+      %li
+        = link_to 'Login with Spotify', '/auth/spotify'
+      %li
+        = link_to 'Login with Facebook', '/auth/facebook'
+    - if current_user.can_create_playlists?
+      %li
+        = link_to 'New Playlist', new_playlist_path 
+    %li
+      = link_to 'My Playlists', playlists_path 
+

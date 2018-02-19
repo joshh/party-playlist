@@ -1,0 +1,4 @@
+%ul 
+  - @playlists.each do |playlist|
+    %li
+      = link_to playlist.name, playlist_path(playlist.slug)

@@ -1,0 +1,14 @@
+- content_for :body_header do
+  = render partial: 'shared/header'
+
+- content_for :flash do
+  - #none
+- content_for :content do
+  - # Main Rendered View
+  = yield
+
+
+  = javascript_include_tag 'application'
+  = yield :javascripts
+
+= render template: 'layouts/base'
