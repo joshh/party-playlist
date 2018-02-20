@@ -51,10 +51,13 @@ class PlaylistTrack < ActiveRecord::Base
   end
 
   def play_track
+    puts 'play track'
     api = Spotify::API.new(playlist.user)
     uri = "spotify:user:#{playlist.user.uid}:playlist:#{playlist.external_id}"
     payload = {"context_uri": uri, "offset": {"position": sort_order}}
-    api.play_song(payload)
+    puts payload
+    resp = api.play_song(payload)
+    puts resp
   end
 
   def maybe_play

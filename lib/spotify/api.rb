@@ -124,7 +124,11 @@ module Spotify
 
 
 
-
+    def play
+      endpoint = @path + "me/player/play"
+      resp = push('PUT', endpoint)
+      resp.body
+    end
 
 
     def pause
@@ -139,7 +143,7 @@ module Spotify
       resp.body
     end
 
-    def previous
+    def prev
       endpoint = @path + "me/player/previous"
       resp = push('POST', endpoint)
       resp.body

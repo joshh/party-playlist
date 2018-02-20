@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
 
 
-  get '/auth/:provider/callback', to: 'sessions#create'
 
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
@@ -17,8 +16,24 @@ Rails.application.routes.draw do
 
   resources :playlists, only: [:index, :show, :new, :create] do
     get 'track/:uri', to: 'playlists#add_track', as: 'add_track'
+  end
+
+  resources :playlist_tracks, only: [] do
+    get 'play', to: 'playlist_tracks#play', as: 'play'
+  end
+
+  resources :users, only: [] do
+
+
 
   end
+
+
+  get '/user/play', to: 'users#play', as: 'play'
+  get '/user/pause', to: 'users#pause', as: 'pause'
+  get '/user/prev', to: 'users#prev', as: 'previous'
+  get '/user/next', to: 'users#next', as: 'next'
+
 
   scope '/api' do
     # get '/current_track', to: 'api#current_track'

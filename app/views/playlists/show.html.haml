@@ -1,5 +1,12 @@
 %h1= @playlist.name
 
+.m-playlist-controls
+  %ul
+    %li= link_to 'previous', previous_path, remote: true
+    %li= link_to 'pause', pause_path, remote: true
+    %li= link_to 'play', play_path, remote: true
+    %li= link_to 'next', next_path, remote: true
+
 .m-playlist-participants
   %h2 Participants
   %ul

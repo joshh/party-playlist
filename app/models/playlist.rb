@@ -48,7 +48,6 @@ class Playlist < ActiveRecord::Base
   end
 
   def add_track resp, current_user
-    puts 'ADDDDD TRACK'
     rec = playlist_tracks.new(
       name: resp[:name],
       album: resp[:album],
@@ -61,8 +60,6 @@ class Playlist < ActiveRecord::Base
       length: resp[:length]
     )
     rec.save!
-    puts rec.errors
-    puts 'its added'
   end
 
 

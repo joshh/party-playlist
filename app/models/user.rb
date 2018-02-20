@@ -19,6 +19,24 @@ class User < ActiveRecord::Base
   has_many :playlist_users
 
 
+  def play
+    Spotify::API.new(self).play if provider == 'spotify'
+  end
+
+  def pause
+    Spotify::API.new(self).pause if provider == 'spotify'
+  end
+
+  def prev
+    Spotify::API.new(self).prev if provider == 'spotify'
+  end
+
+  def next
+    Spotify::API.new(self).next if provider == 'spotify'
+  end
+
+
+
   def refresh_token_if_expired
 
   end

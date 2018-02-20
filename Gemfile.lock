@@ -78,7 +78,6 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubi (1.7.0)
-    excon (0.60.0)
     execjs (2.7.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -133,8 +132,8 @@ GEM
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
-    omniauth-spotify (0.0.2)
-      omniauth (~> 1.0)
+    omniauth-spotify (0.0.13)
+      omniauth-oauth2 (~> 1.1)
     public_suffix (3.0.1)
     puma (3.11.2)
     rack (2.0.4)
@@ -183,8 +182,6 @@ GEM
     selenium-webdriver (3.9.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
-    spotify-client (0.0.10)
-      excon (~> 0.37)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -237,12 +234,11 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   omniauth
   omniauth-facebook (~> 4.0)
-  omniauth-spotify
+  omniauth-spotify (~> 0.0.13)
   puma (~> 3.7)
   rails (~> 5.1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
-  spotify-client
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

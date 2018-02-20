@@ -3,6 +3,9 @@
     .m-playlist-image
       = image_tag track.art
     .m-playlist-track= track.name
-    .m-playlist-track= track.artist
-    .m-playlist-track= track.album
-    .m-playlist-track= "#{track.minutes}:#{track.seconds.to_s.rjust(2, '0')}"
+    .m-playlist-artist= track.artist
+    .m-playlist-albume= track.album
+    .m-playlist-time= "#{track.minutes}:#{track.seconds.to_s.rjust(2, '0')}"
+    - if current_user == @playlist.user
+      .m-playlist-play
+        = link_to 'Play', playlist_track_play_path(track.id), remote: true
