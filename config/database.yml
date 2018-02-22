@@ -49,8 +49,11 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: spotify_jukebok_production
+#   username: spotify_jukebok
+#   password: <%= ENV['SPOTIFY_JUKEBOK_DATABASE_PASSWORD'] %>
+
 production:
-  <<: *default
-  database: spotify_jukebok_production
-  username: spotify_jukebok
-  password: <%= ENV['SPOTIFY_JUKEBOK_DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
