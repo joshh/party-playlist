@@ -19,7 +19,9 @@ module SpotifyJukebok
     # -- all .rb files in that directory are automatically loaded.
 
 
-    Spring.watch "app/services/**"
+    if ENV['environment'] == 'development'
+      Spring.watch "app/services/**"
+    end
 
     Bundler.require(*Rails.groups)
     Dotenv::Railtie.load
