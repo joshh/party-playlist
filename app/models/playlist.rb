@@ -22,7 +22,7 @@ class Playlist < ActiveRecord::Base
 
 
   def tracks
-    playlist_tracks
+    playlist_tracks.sorted
   end
 
   def can_add_uri? uri

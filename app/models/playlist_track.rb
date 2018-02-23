@@ -66,10 +66,13 @@ class PlaylistTrack < ActiveRecord::Base
     puts playlist.user.previously_played
     if sort_order == 0
       play_track
-    else playlist.user.currently_playing == false
+    else 
+      currently = playlist.user.currently_playing
+      if currently == false || (currently["is_playing"] == false && currently["id"] == playlist.play_tracks.first.uri)
       previous = playlist.user.previously_played
-      if previous[:context_id] == playlist.external_id && previous[:id] == previous_track.uri
-        play_track
+        if previous[:context_id] == playlist.external_id && previous[:id] == previous_track.uri
+          play_track
+        end
       end
     end
   end
