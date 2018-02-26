@@ -41,15 +41,8 @@ class PlaylistsController < ApplicationController
 
       if resp["snapshot_id"]
         track_resp = api.track(params[:uri])
-        puts '44'
-        pp track_resp
         track_json = JsonFormattingService.new(track_resp).format_single_track
-        puts '47'
-        pp track_json
-        pp current_user
-        pp @playlist
         @playlist.add_track(track_json, current_user)
-        puts 'added track'
       end
     else
       puts 'ALREADY ADDED'

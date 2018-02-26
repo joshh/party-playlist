@@ -108,9 +108,7 @@ module Spotify
     def search(query, type)
       endpoint = @path + 'search'
       payload = {q: query, type: type, market: 'US'}
-      puts payload
       resp = push('GET', endpoint, payload)
-      puts resp.body
       service = JsonFormattingService.new(resp.body)
       @data = service.format_tracks if type == 'track'
     end

@@ -31,6 +31,7 @@ class JsonFormattingService
 
 
   def format_previously_played
+    puts @json
     format_playing_track(@json['items'].last)
   end
 
